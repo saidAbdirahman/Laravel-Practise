@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        $data = Department::with('employee')->find(2);
+        $data = Employee::with('department')->find(2);
+       
+
+       echo $data->department->name ,'<br>';
         echo $data->name, '<br><br>';
-       foreach($data->employee as $item){
-        echo $item->name ,'<br>';
-        echo $item->phone, '<br><br><br>';
-       }
+        echo $data->phone, '<br><br><br>';
+      
 
     }
 }
